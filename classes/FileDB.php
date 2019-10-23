@@ -29,16 +29,15 @@ class FileDB {
         if (isset($this->data[$table_name])) {
             return true;
         } else
-            false;
+            return false;
     }
 
     public function createTable($table_name) {
-        if (tableExists($table_name)) {
+        if (!$this->tableExists($table_name)) {
             $this->data[$table_name] = [];
             return true;
-        } else {
-            return false;
         }
+        return false;
     }
 
 }
